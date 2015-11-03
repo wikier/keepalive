@@ -8,6 +8,8 @@ setup(
       license = 'GNU GPL',
       author = "Benjamin Woodruff",
       author_email = "github@benjam.info",
+      maintainer = 'Sergio Fernández',
+      maintainer_email = 'sergio@wikier.org',
       url = 'https://github.com/wikier/keepalive',
       download_url = 'https://github.com/wikier/keepalive/releases',
       platforms = ['any'],
