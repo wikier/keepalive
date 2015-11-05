@@ -3,11 +3,10 @@ from setuptools import setup
 setup(
       name = 'keepalive',
       version = "0.3.dev0",
-      description = 'urllib keepalive support for python3',
-      long_description = 'An HTTP handler for `urllib2` that supports HTTP 1.1 and keepalive in Python 3.x.',
+      description = 'urllib keepalive support for python',
+      long_description = 'An HTTP handler for `urllib2` that supports HTTP 1.1 and keepalive.',
       license = 'GNU GPL',
-      author = "Benjamin Woodruff",
-      author_email = "github@benjam.info",
+      author = "mstenner, rtomayko",
       maintainer = 'Sergio Fernandez',
       maintainer_email = 'sergio@wikier.org',
       url = 'https://github.com/wikier/keepalive',
@@ -21,7 +20,9 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
+        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
       ],
-      keywords = 'python http urllib keepalive'
+      keywords = 'python http urllib keepalive',
+      use_2to3 = True
 )
