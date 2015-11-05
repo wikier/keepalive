@@ -208,7 +208,7 @@ class KeepAliveHandler:
         
     #### Transaction Execution
     def do_open(self, req):
-        host = req.get_host()
+        host = req.host
         if not host:
             raise urllib2.URLError('no host given')
 
@@ -303,8 +303,8 @@ class KeepAliveHandler:
 
     def _start_transaction(self, h, req):
         try:
-            if req.has_data():
-                data = req.get_data()
+            if req.data:
+                data = req.data
                 h.putrequest('POST', req.get_selector())
                 if not req.headers.has_key('Content-type'):
                     h.putheader('Content-type',
@@ -312,7 +312,7 @@ class KeepAliveHandler:
                 if not req.headers.has_key('Content-length'):
                     h.putheader('Content-length', '%d' % len(data))
             else:
-                h.putrequest('GET', req.get_selector())
+                h.putrequest('GET', req.selector)
         except (socket.error, httplib.HTTPException), err:
             raise urllib2.URLError(err)
 
@@ -321,7 +321,7 @@ class KeepAliveHandler:
         for k, v in req.headers.items():
             h.putheader(k, v)
         h.endheaders()
-        if req.has_data():
+        if req.data:
             h.send(data)
 
     def _get_connection(self, host):
