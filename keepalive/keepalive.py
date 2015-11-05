@@ -421,7 +421,7 @@ class HTTPResponse(httplib.HTTPResponse):
                 self._rbuf = self._rbuf[amt:]
                 return s
 
-        s = self._rbuf + self._raw_read(amt)
+        s = self._rbuf + self._raw_read(amt).decode('UTF-8', 'ignore')
         self._rbuf = ''
         return s
 
