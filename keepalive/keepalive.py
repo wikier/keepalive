@@ -14,8 +14,9 @@
 #      59 Temple Place, Suite 330, 
 #      Boston, MA  02111-1307  USA
 
-# This file is part of urlgrabber, a high-level cross-protocol url-grabber
+# This file was part of urlgrabber, a high-level cross-protocol url-grabber
 # Copyright 2002-2004 Michael D. Stenner, Ryan Tomayko
+# Copyright 2015 Sergio Fernández
 
 """An HTTP handler for urllib2 that supports HTTP 1.1 and keepalive.
 
