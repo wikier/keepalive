@@ -22,4 +22,4 @@
 
 from keepalive import *
 
-__version__ = "0.5.dev0"
+__version__ = "0.4.1"
