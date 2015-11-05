@@ -108,8 +108,6 @@ import thread
 
 DEBUG = None
 
-import sslfactory
-
 import sys
 if sys.version_info < (2, 4): HANDLE_ERRORS = 1
 else: HANDLE_ERRORS = 0
@@ -343,7 +341,11 @@ class HTTPSHandler(KeepAliveHandler, urllib2.HTTPSHandler):
     def __init__(self, ssl_factory=None):
         KeepAliveHandler.__init__(self)
         if not ssl_factory:
-            ssl_factory = sslfactory.get_factory()
+            try:
+                import sslfactory
+                ssl_factory = sslfactory.get_factory()
+            except ImportError:
+                pass
         self._ssl_factory = ssl_factory
     
     def https_open(self, req):
