@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
       name = 'keepalive',
-      version = "0.3.dev0",
+      version = "0.3",
       description = 'urllib keepalive support for python',
       long_description = 'An HTTP handler for `urllib2` that supports HTTP 1.1 and keepalive.',
       license = 'GNU GPL',
