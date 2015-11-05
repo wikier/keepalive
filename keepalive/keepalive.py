@@ -312,7 +312,10 @@ class KeepAliveHandler:
                 if not req.headers.has_key('Content-length'):
                     h.putheader('Content-length', '%d' % len(data))
             else:
-                h.putrequest('GET', req.selector)
+                if hasattr(req, 'selector'):
+                    h.putrequest('GET', req.selector)
+                else:
+                    h.putrequest('GET', req.get_selector())
         except (socket.error, httplib.HTTPException), err:
             raise urllib2.URLError(err)
 
