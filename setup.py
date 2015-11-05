@@ -1,4 +1,5 @@
 from setuptools import setup
+import sys
 
 try:
     import six
