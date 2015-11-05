@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #   This library is free software; you can redistribute it and/or
 #   modify it under the terms of the GNU Lesser General Public
 #   License as published by the Free Software Foundation; either
@@ -19,3 +21,5 @@
 # Copyright 2015 Sergio Fernández
 
 from keepalive import *
+
+__version__ = "0.4.dev0"

@@ -1,8 +1,26 @@
 from setuptools import setup
 
+try:
+    import six
+    py3 = six.PY3
+except:
+    py3 = sys.version_info[0] >= 3
+
+# metadata
+if py3:
+    import re
+    _version_re = re.compile(r'__version__\s*=\s*"(.*)"')
+    for line in open('keepalive/__init__.py', encoding='utf-8'):
+        version_match = _version_re.match(line)
+        if version_match:
+            _version = version_match.group(1)
+else:
+    import keepalive
+    _version = keepalive.__version__
+
 setup(
       name = 'keepalive',
-      version = "0.4.dev0",
+      version = _version,
       description = 'urllib keepalive support for python',
       long_description = 'An HTTP handler for `urllib2` that supports HTTP 1.1 and keepalive.',
       license = 'GNU GPL',
