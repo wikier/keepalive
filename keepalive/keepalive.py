@@ -388,7 +388,7 @@ class HTTPResponse(httplib.HTTPResponse):
             httplib.HTTPResponse.__init__(self, sock, debuglevel)
         self.fileno = sock.fileno
         self.code = None
-        self._rbuf = ''
+        self._rbuf = b""
         self._rbufsize = 8096
         self._handler = None # inserted by the handler later
         self._host = None    # (same)
@@ -427,12 +427,12 @@ class HTTPResponse(httplib.HTTPResponse):
                 self._rbuf = self._rbuf[amt:]
                 return s
 
-        s = self._rbuf + self._raw_read(amt).decode('UTF-8', 'ignore')
-        self._rbuf = ''
+        s = self._rbuf + self._raw_read(amt)
+        self._rbuf = b""
         return s
 
     def readline(self, limit=-1):
-        data = ""
+        data = b""
         i = self._rbuf.find('\n')
         while i < 0 and not (0 < limit <= len(self._rbuf)):
             new = self._raw_read(self._rbufsize)
