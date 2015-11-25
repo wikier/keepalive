@@ -308,7 +308,10 @@ class KeepAliveHandler:
         try:
             if req.data:
                 data = req.data
-                h.putrequest('POST', req.get_selector())
+                if hasattr(req, 'selector'):
+                    h.putrequest('POST', req.selector)
+                else:
+                    h.putrequest('POST', req.get_selector())
                 if not req.headers.has_key('Content-type'):
                     h.putheader('Content-type',
                                 'application/x-www-form-urlencoded')
