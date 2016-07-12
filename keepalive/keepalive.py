@@ -249,8 +249,8 @@ class KeepAliveHandler:
 
         r._handler = self
         r._host = host
-        r._url = req.get_full_url()
         r._connection = h
+        r.url = req.get_full_url()
         r.code = r.status
         r.headers = r.msg
         r.msg = r.reason
