@@ -23,23 +23,13 @@
 from setuptools import setup
 import sys
 
-try:
-    import six
-    py3 = six.PY3
-except:
-    py3 = sys.version_info[0] >= 3
-
 # metadata
-if py3:
-    import re
-    _version_re = re.compile(r'__version__\s*=\s*"(.*)"')
-    for line in open('keepalive/__init__.py', encoding='utf-8'):
-        version_match = _version_re.match(line)
-        if version_match:
-            _version = version_match.group(1)
-else:
-    import keepalive
-    _version = keepalive.__version__
+import re
+_version_re = re.compile(r'__version__\s*=\s*"(.*)"')
+for line in open('keepalive/__init__.py', encoding='utf-8'):
+    version_match = _version_re.match(line)
+    if version_match:
+        _version = version_match.group(1)
 
 setup(
       name = 'keepalive',
@@ -62,14 +52,10 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
       ],
-      keywords = 'python http urllib keepalive',
-      use_2to3 = True
+      keywords = 'python http urllib keepalive'
 )
